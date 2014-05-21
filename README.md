@@ -7,6 +7,16 @@ Installation
 ==============
 
  * Make sure to first install ucto itself (http://ilk.uvt.nl/ucto) and its dependencies
- * For Python 3 , run:  ``$ sudo setup.py install``
+ * For Python 3 , run:  ``$ sudo setup3.py install``
  * For Python 2 , run:  ``$ sudo setup2.py install``
+
+Test and Example
+================
+
+Run and inspect ``example.py`` (Python 3) or ``example2.py`` (Python 2) for testing and documentation.
+
+
+
+
+
 
