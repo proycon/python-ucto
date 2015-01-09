@@ -34,6 +34,7 @@ cdef extern from "ucto/tokenize.h" namespace "Tokenizer":
         bool setXMLInput(bool)
         int setDebug(int)
 
+        void tokenize(str,str) nogil
         int tokenizeLine(string &) nogil
         vector[string] getSentences() nogil
         vector[Token] getSentence(int) nogil

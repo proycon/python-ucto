@@ -85,10 +85,26 @@ cdef class Tokenizer:
                 self.tok.setSentencePerLineInput(value is True)
             elif arg == 'sentenceperlineoutput':
                 self.tok.setSentencePerLineOutput(value is True)
+            elif arg == 'xmlinput' or arg == 'foliainput':
+                self.tok.setXMLInput(value is True)
+            elif arg == 'xmloutput' or arg == 'foliaoutput':
+                if docid in kwargs:
+                    docid = kwargs['docid']
+                else:
+                    docid = "untitled"
+                self.tok.setXMLOutput(value is True, docid)
             elif arg == 'debug':
                 self.tok.setDebug(int(value))
+            elif args == 'docid':
+                pass
             else:
                 raise ValueError("No such keyword argument: " +  arg)
+
+    def tokenize(self, str inputfile, str outputfile):
+        """Run ucto from inputfile to outputfile (like command line tool)"""
+        self.tok.tokenize(inputfile.encode('utf-8'), outputfile.encode('utf-8'))
+
+
 
     def process(self, str line):
         """Feed text to the tokeniser. This needs not be a single line."""
