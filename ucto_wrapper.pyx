@@ -95,7 +95,7 @@ cdef class Tokenizer:
                 self.tok.setXMLOutput(value is True, docid)
             elif arg == 'debug':
                 self.tok.setDebug(int(value))
-            elif args == 'docid':
+            elif arg == 'docid':
                 pass
             else:
                 raise ValueError("No such keyword argument: " +  arg)
