@@ -19,7 +19,7 @@ extensions = [ Extension("ucto",
 
 setup(
     name = 'python-ucto',
-    version = '0.1',
+    version = '0.1.1',
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
     classifiers=[
