@@ -88,7 +88,7 @@ cdef class Tokenizer:
             elif arg == 'xmlinput' or arg == 'foliainput':
                 self.tok.setXMLInput(value is True)
             elif arg == 'xmloutput' or arg == 'foliaoutput':
-                if docid in kwargs:
+                if 'docid' in kwargs:
                     docid = kwargs['docid']
                 else:
                     docid = "untitled"
