@@ -92,7 +92,7 @@ cdef class Tokenizer:
                     docid = kwargs['docid']
                 else:
                     docid = "untitled"
-                self.tok.setXMLOutput(value is True, docid)
+                self.tok.setXMLOutput(value is True, docid.encode('utf-8'))
             elif arg == 'debug':
                 self.tok.setDebug(int(value))
             elif arg == 'docid':
