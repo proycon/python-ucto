@@ -8,8 +8,7 @@ Installation
 
  * Make sure to first install ucto itself (http://ilk.uvt.nl/ucto or from git http://github.com/proycon/ucto ) and its dependencies
  * Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
- * For Python 3 , run:  ``$ sudo setup3.py install``
- * For Python 2 , run:  ``$ sudo setup2.py install``
+ * Run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
 
 Test and Example
 ================
