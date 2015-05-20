@@ -7,7 +7,7 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 
 if sys.version < '3':
     extensions = [ Extension("ucto",
@@ -41,6 +41,7 @@ setup(
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
     requires=['ucto (>=0.8.0)'],
+    install_requires=['Cython'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Text Processing :: Linguistic",
