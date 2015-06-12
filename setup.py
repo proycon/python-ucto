@@ -7,14 +7,20 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.2.2'
+VERSION = '0.2.3'
+
+includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ],
+libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib'],
+if 'VIRTUAL_ENV' in os.environ:
+    includedirs.insert(0,os.environ['VIRTUAL_ENV'] + '/include')
+    libdirs.insert(0,os.environ['VIRTUAL_ENV'] + '/lib')
 
 if sys.version < '3':
     extensions = [ Extension("ucto",
                     [ "ucto_classes.pxd", "ucto_wrapper2.pyx"],
                     language='c++',
-                    include_dirs=[HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ],
-                    library_dirs=[HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib'],
+                    include_dirs=includedirs,
+                    library_dirs=libdirs,
                     libraries=['ucto','folia'],
                     pyrex_gdb=True
                     ) ]
@@ -22,8 +28,8 @@ else:
     extensions = [ Extension("ucto",
                     [ "ucto_classes.pxd", "ucto_wrapper.pyx"],
                     language='c++',
-                    include_dirs=[HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ],
-                    library_dirs=[HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib'],
+                    include_dirs=includedirs,
+                    library_dirs=libdirs,
                     libraries=['ucto','folia'],
                     pyrex_gdb=True
                     ) ]
