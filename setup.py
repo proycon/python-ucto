@@ -9,8 +9,8 @@ from os.path import expanduser
 HOMEDIR = expanduser("~")
 VERSION = '0.2.3'
 
-includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ],
-libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib'],
+includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ]
+libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
 if 'VIRTUAL_ENV' in os.environ:
     includedirs.insert(0,os.environ['VIRTUAL_ENV'] + '/include')
     libdirs.insert(0,os.environ['VIRTUAL_ENV'] + '/lib')
