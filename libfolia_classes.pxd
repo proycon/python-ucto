@@ -1,5 +1,6 @@
 
 cdef extern from "libfolia/foliautils.h" namespace "folia":
+    cdef int BASE
     cdef int TextContent_t
     cdef int Text_t
     cdef int Word_t
@@ -85,6 +86,10 @@ cdef extern from "libfolia/foliautils.h" namespace "folia":
     cdef int TextMarkupError_t
     cdef int TextMarkupStyle_t
     cdef int XmlText_t
+    cdef int External_t
+    cdef int Note_t
+    cdef int Reference_t
+    cdef int Part_t
 
 
 cdef extern from "libfolia/folia.h" namespace "folia":

@@ -9,6 +9,7 @@
 
 from libcpp.string cimport string
 from libcpp.vector cimport vector
+from libcpp.set cimport set
 from libcpp cimport bool
 from libc.stdint cimport *
 
