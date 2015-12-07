@@ -22,7 +22,7 @@ if sys.version < '3':
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++11'],
+                    extra_compile_args=['--std=c++0x'],
                     ) ]
 else:
     extensions = [ Extension("ucto",
@@ -31,7 +31,7 @@ else:
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++11'],
+                    extra_compile_args=['--std=c++0x'],
                     ) ]
 
 
