@@ -7,7 +7,7 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.2.3'
+VERSION = '0.2.4'
 
 includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ]
 libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
@@ -22,7 +22,7 @@ if sys.version < '3':
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    pyrex_gdb=True
+                    extra_compile_args=['--std=c++0x'],
                     ) ]
 else:
     extensions = [ Extension("ucto",
@@ -31,7 +31,7 @@ else:
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    pyrex_gdb=True
+                    extra_compile_args=['--std=c++0x'],
                     ) ]
 
 
