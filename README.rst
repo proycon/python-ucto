@@ -1,4 +1,4 @@
-.. image:: http://applejack.science.ru.nl/lamabadge.php/colibri-core
+.. image:: http://applejack.science.ru.nl/lamabadge.php/python-ucto
    :target: http://applejack.science.ru.nl/languagemachines/
 
 Ucto for Python
