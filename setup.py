@@ -7,7 +7,7 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.2.4'
+VERSION = '0.3.0'
 
 includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ]
 libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
@@ -40,19 +40,18 @@ setup(
     version = VERSION,
     author = 'Maarten van Gompel',
     author_email = "proycon@anaproy.nl",
-    description = ("This is a Python binding to the tokenizer Ucto. Tokenisation is one of the first step in almost any Natural Language Processing task, yet it is not always as trivial a task as it appears to be. This binding makes the power of the ucto tokeniser available to Python. Ucto itself is a regular-expression based, extensible, and advanced tokeniser written in C++ (http://ilk.uvt.nl/ucto)."),
+    description = ("This is a Python binding to the tokenizer Ucto. Tokenisation is one of the first step in almost any Natural Language Processing task, yet it is not always as trivial a task as it appears to be. This binding makes the power of the ucto tokeniser available to Python. Ucto itself is a regular-expression based, extensible, and advanced tokeniser written in C++ (https://languagemachines.github.io/ucto)."),
     license = "GPL",
     keywords = "tokenizer tokenization tokeniser tokenisation nlp computational_linguistics ucto",
-    url = "http://github.com/proycon/python-ucto",
+    url = "https://github.com/proycon/python-ucto",
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
-    requires=['ucto (>=0.8.0)'],
+    requires=['ucto (>=0.8.4)'],
     install_requires=['Cython'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Text Processing :: Linguistic",
         "Programming Language :: Cython",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Operating System :: POSIX",
