@@ -16,6 +16,7 @@ from cython import address
 from libc.stdint cimport *
 from libcpp.utility cimport pair
 import os.path
+cimport libfolia_classes
 cimport ucto_classes
 
 class TokenRole:

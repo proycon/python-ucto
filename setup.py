@@ -17,7 +17,7 @@ if 'VIRTUAL_ENV' in os.environ:
 
 if sys.version < '3':
     extensions = [ Extension("ucto",
-                    [ "ucto_classes.pxd", "ucto_wrapper2.pyx"],
+                    [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper2.pyx"],
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
@@ -26,7 +26,7 @@ if sys.version < '3':
                     ) ]
 else:
     extensions = [ Extension("ucto",
-                    [ "ucto_classes.pxd", "ucto_wrapper.pyx"],
+                    [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper.pyx"],
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
