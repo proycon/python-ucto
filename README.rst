@@ -26,7 +26,7 @@ Manual (Advanced)
 
 Advanced note: If the ucto libraries and includes are installed in a non-standard location,
 you can set environment variables INCLUDE_DIRS and LIBRARY_DIRS to point to
-them prior to invocation of ``setup.py``.
+them prior to invocation of ``setup.py install``.
 
 Usage
 ---------------------
