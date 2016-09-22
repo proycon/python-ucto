@@ -67,9 +67,6 @@ cdef class Tokenizer:
     cdef ucto_classes.TokenizerClass tok
 
     def __init__(self, filename, **kwargs):
-        if not os.path.exists(filename):
-            raise IOError("File does not exist, expected valid ucto settings file")
-
         self.tok.init(filename.encode('utf-8'))
         for arg, value in kwargs.items():
             if arg == 'lowercase':

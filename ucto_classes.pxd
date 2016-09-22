@@ -22,7 +22,7 @@ cdef extern from "ucto/tokenize.h" namespace "Tokenizer":
         int role
 
     cdef cppclass TokenizerClass:
-        bool init(string & settingsfile)
+        bool init(string & settingsfile) except +IOError
 
         bool setLowercase(bool)
         bool setUppercase(bool)
