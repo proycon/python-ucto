@@ -7,7 +7,7 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.3.0'
+VERSION = '0.4.0'
 
 includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ]
 libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
