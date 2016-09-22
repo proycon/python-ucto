@@ -12,13 +12,13 @@ Installation
 Easy
 ~~~~~~~~~~
 
-For easy installation, please use our LaMachine distribution (https://proycon.github.io/LaMachine).
 
-Alternatively, on Arch Linux, you can use use the `python-ucto-git <https://aur.archlinux.org/packages/python-ucto-git/>_` package from the Arch User Repository (AUR). On
-Debian/Ubuntu Linux, check if the package ``python-ucto`` or ``python3-ucto`` is available already.
+* On **Debian/Ubuntu Linux**: check if the package ``python-ucto`` or ``python3-ucto`` is available already.
+* On **Arch Linux**, use the `python-ucto-git <https://aur.archlinux.org/packages/python-ucto-git/>_` package from the Arch User Repository (AUR).
+* In all other cases, for easy installation of both python-ucto as well as ucto itself, please use our LaMachine distribution (https://proycon.github.io/LaMachine)
 
-Manual
-~~~~~~~~~~~~
+Manual (Advanced)
+~~~~~~~~~~~~~~~~~~
 
 * Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies. 
 * Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
