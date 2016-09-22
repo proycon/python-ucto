@@ -24,6 +24,9 @@ Manual (Advanced)
 * Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
 * Clone this repository and run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
 
+Advanced note: If the ucto libraries and includes are installed in a non-standard location,
+you can set environment variables INCLUDE_DIRS and LIBRARY_DIRS to point to
+them prior to invocation of ``setup.py``.
 
 Usage
 ---------------------
