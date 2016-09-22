@@ -17,9 +17,9 @@ For easy installation, please use our LaMachine distribution (https://proycon.gi
 Manual
 ~~~~~~~~~~~~
 
- * Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies. 
- * Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
- * Run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
+* Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies. 
+* Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
+* Run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
 
 
 Usage
@@ -66,7 +66,7 @@ multiple times in sequence. The tokens
 themselves will be buffered in the ``Tokenizer`` instance and can be
 obtained by iterating over it, after which the buffer will be cleared:
 
-... code:: python
+.. code:: python
 
     #pass the text (a str) (may be called multiple times),
     tokenizer.process(text)
@@ -91,16 +91,12 @@ Each token is an instance of ``ucto.Token``. It can be serialised to string
 using ``str()`` (Python 3), as shown in the example above. In Python 2, use ``unicode()`` instead.
 
 The following methods are available on ``ucto.Token`` instances:
-* ``isendofsentence()`` -- Returns a boolean indicating whether this is the
-  last token of a sentence.
-* ``nospace()`` -- Returns a boolean, if ``True`` there is no space following
-  this token in the original input text.
-* ``isnewparagraph()`` -- Returns ``True`` if this token is the start of a new
-  paragraph.
+* ``isendofsentence()`` -- Returns a boolean indicating whether this is the last token of a sentence.
+* ``nospace()`` -- Returns a boolean, if ``True`` there is no space following this token in the original input text.
+* ``isnewparagraph()`` -- Returns ``True`` if this token is the start of a new paragraph.
 * ``isbeginofquote()``
 * ``isendofquote()``
-* ``tokentype`` -- This is an attribute, not a method. It contains the type
-  or class of the token (e.g. a string like  WORD, ABBREVIATION, PUNCTUATION, URL, EMAIL, SMILEY, etc..)
+* ``tokentype`` -- This is an attribute, not a method. It contains the type or class of the token (e.g. a string like  WORD, ABBREVIATION, PUNCTUATION, URL, EMAIL, SMILEY, etc..)
 
 In addition to the low-level ``process()`` method, the tokenizer can also read
 an input file and produce an output file, in the same fashion as ucto itself
@@ -115,10 +111,8 @@ Input and output files may
 be either plain text, or in the `FoLiA XML format <https://proycon.github.io/folia>`_.  Upon instantiation of the ``Tokenizer`` class, there
 are two keyword arguments to indicate this:
 
-* ``xmlinput`` or ``foliainput`` -- A boolean that indicates whether the input is
-  FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``.
-* ``xmloutput`` or ``foliaoutput`` -- A boolean that indicates whether the input is
-  FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``.
+* ``xmlinput`` or ``foliainput`` -- A boolean that indicates whether the input is FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``.
+* ``xmloutput`` or ``foliaoutput`` -- A boolean that indicates whether the input is FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``.
 
 An example for plain text input and FoLiA output:
 
