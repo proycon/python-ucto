@@ -14,6 +14,9 @@ Easy
 
 For easy installation, please use our LaMachine distribution (https://proycon.github.io/LaMachine).
 
+Alternatively, on Arch Linux, you can use use the ``python-ucto-git`` package from the AUR, on
+Debian/Ubuntu, check if the package ``python-ucto`` is available already.
+
 Manual
 ~~~~~~~~~~~~
 
@@ -27,7 +30,7 @@ Usage
 
 Import and instantiate the ``Tokenizer`` class with a configuration file.
 
-... code:: python
+.. code:: python
 
     import ucto
     configurationfile = "/usr/local/etc/ucto/tokconfig-en"
