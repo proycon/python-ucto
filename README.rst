@@ -42,7 +42,9 @@ The configuration files supplied with ucto are named ``tokconfig-xx`` where
 ``tokconfig-generic`` one that has no language-specific rules. Alternatively,
 you can make and supply your own configuration file. Note that for older
 versions of ucto you may need to provide the absolute path, but the latest
-versions will find the configurations supplied with ucto automatically.
+versions will find the configurations supplied with ucto automatically. See
+`here <https://github.com/LanguageMachines/uctodata/tree/master/config>`_ for a
+list of available configuration in the latest version.
 
 The constructor for the ``Tokenizer`` class takes the following keyword
 arguments:
