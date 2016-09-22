@@ -17,7 +17,7 @@ if 'VIRTUAL_ENV' in os.environ:
 if 'INCLUDE_DIRS' in os.environ:
     includedirs = list(os.environ['INCLUDE_DIRS'].split(':')) + includedirs
 if 'LIBRARY_DIRS' in os.environ:
-    librarydirs = list(os.environ['LIBRARY_DIRS'].split(':')) + librarydirs
+    libdirs = list(os.environ['LIBRARY_DIRS'].split(':')) + libdirs
 
 if sys.version < '3':
     extensions = [ Extension("ucto",
