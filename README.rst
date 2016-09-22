@@ -33,15 +33,16 @@ Import and instantiate the ``Tokenizer`` class with a configuration file.
 .. code:: python
 
     import ucto
-    configurationfile = "/usr/local/etc/ucto/tokconfig-en"
+    configurationfile = "tokconfig-en"
     tokenizer = ucto.Tokenizer(configurationfile)
 
-The configuration file has to be explicitly passed for now, it is shipped in
-the uctodata package and should have been installed along with ucto. It is
-typically found in ``/etc/ucto/`` or ``/usr/local/etc/ucto/``. There are
-configuration files optimised for various languages, indicated by the two
-letter iso-639-1 suffix at the end of the filename, as well as a
-``tokconfig-generic`` one that has no language-specific rules.
+
+The configuration files supplied with ucto are named ``tokconfig-xx`` where
+``xx`` corresponds to a two letter iso-639-1 language code. There is also a
+``tokconfig-generic`` one that has no language-specific rules. Alternatively,
+you can make and supply your own configuration file. Note that for older
+versions of ucto you may need to provide the absolute path, but the latest
+versions will find the configurations supplied with ucto automatically.
 
 The constructor for the ``Tokenizer`` class takes the following keyword
 arguments:
