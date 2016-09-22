@@ -14,6 +14,10 @@ libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
 if 'VIRTUAL_ENV' in os.environ:
     includedirs.insert(0,os.environ['VIRTUAL_ENV'] + '/include')
     libdirs.insert(0,os.environ['VIRTUAL_ENV'] + '/lib')
+if 'INCLUDE_DIRS' in os.environ:
+    includedirs = list(os.environ['INCLUDE_DIRS'].split(':')) + includedirs
+if 'LIBRARY_DIRS' in os.environ:
+    librarydirs = list(os.environ['LIBRARY_DIRS'].split(':')) + librarydirs
 
 if sys.version < '3':
     extensions = [ Extension("ucto",
