@@ -20,7 +20,7 @@ Easy
 Manual (Advanced)
 ~~~~~~~~~~~~~~~~~~
 
-* Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies. 
+* Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies.
 * Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
 * Clone this repository and run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
 
@@ -127,7 +127,7 @@ An example for plain text input and FoLiA output:
 
 .. code:: python
 
-    tokenizer = Ucto(configurationfile, foliaoutput=True)
+    tokenizer = ucto.Tokenizer(configurationfile, foliaoutput=True)
     tokenizer.tokenize("input.txt", "ucto_output.folia.xml")
 
 FoLiA documents retain all the information ucto can output, unlike the plain
