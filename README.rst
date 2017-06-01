@@ -127,7 +127,7 @@ An example for plain text input and FoLiA output:
 
 .. code:: python
 
-    tokenizer = Ucto(configurationfile, foliaoutput=True)
+    tokenizer = ucto.Tokenizer(configurationfile, foliaoutput=True)
     tokenizer.tokenize("input.txt", "ucto_output.folia.xml")
 
 FoLiA documents retain all the information ucto can output, unlike the plain
