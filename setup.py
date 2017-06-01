@@ -7,7 +7,7 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.4.0'
+VERSION = '0.4.1'
 
 includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ]
 libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
@@ -50,7 +50,7 @@ setup(
     url = "https://github.com/proycon/python-ucto",
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
-    requires=['ucto (>=0.8.4)'],
+    requires=['ucto (>=0.9.6)'],
     install_requires=['Cython'],
     classifiers=[
         "Development Status :: 4 - Beta",

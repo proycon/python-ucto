@@ -9,7 +9,7 @@ This is the next paragraph. And so it ends"""
 
 
 #Set a file to use as tokeniser rules, this one is for English, other languages are available too:
-settingsfile = "tokconfig-en"
+settingsfile = "tokconfig-eng"
 
 #Initialise the tokeniser, options are passed as keyword arguments, defaults:
 #   lowercase=False,uppercase=False,sentenceperlineinput=False,

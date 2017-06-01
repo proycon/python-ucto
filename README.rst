@@ -20,7 +20,7 @@ Easy
 Manual (Advanced)
 ~~~~~~~~~~~~~~~~~~
 
-* Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies. 
+* Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies.
 * Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
 * Clone this repository and run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
 
@@ -36,12 +36,12 @@ Import and instantiate the ``Tokenizer`` class with a configuration file.
 .. code:: python
 
     import ucto
-    configurationfile = "tokconfig-en"
+    configurationfile = "tokconfig-eng"
     tokenizer = ucto.Tokenizer(configurationfile)
 
 
-The configuration files supplied with ucto are named ``tokconfig-xx`` where
-``xx`` corresponds to a two letter iso-639-1 language code. There is also a
+The configuration files supplied with ucto are named ``tokconfig-xxx`` where
+``xxx`` corresponds to a three letter iso-639-3 language code. There is also a
 ``tokconfig-generic`` one that has no language-specific rules. Alternatively,
 you can make and supply your own configuration file. Note that for older
 versions of ucto you may need to provide the absolute path, but the latest
