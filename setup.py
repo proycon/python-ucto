@@ -7,10 +7,31 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.4.1'
+VERSION = '0.4.2'
 
-includedirs = [HOMEDIR + '/local/include/','/usr/include/', '/usr/include/libxml2','/usr/local/include/' ]
-libdirs = [HOMEDIR + '/local/lib/','/usr/lib','/usr/local/lib']
+
+includedirs = []
+libdirs = []
+if os.path.exists(HOMEDIR + "/local/include"): includedirs.append(HOMEDIR + '/local/include/')
+if os.path.exists(HOMEDIR + "/local/lib"): libdirs.append(HOMEDIR + '/local/lib/')
+
+if os.path.exists("/usr/local/Cellar"):
+   #we are running on Mac OS X with homebrew, stuff is in specific locations:
+    for pkg in ('icu4c', 'libxml2'):
+        if os.path.isdir("/usr/local/Cellar/" + pkg):
+            versiondir = None
+            for _versiondir in sorted(glob.glob("/usr/local/Cellar/")):
+                if os.path.isdir(_versiondir): versiondir = _versiondir
+            if versiondir is not None:
+                if os.path.exists(versiondir + "/include"):
+                    includedirs.append(versiondir + "/include")
+                if os.path.exists(versiondir + "/lib"):
+                    libdirs.append(versiondir + "/lib")
+
+#add some common default paths
+includedirs += ['/usr/include/', '/usr/include/libxml2','/usr/local/include/']
+libdirs += ['/usr/lib','/usr/local/lib']
+
 if 'VIRTUAL_ENV' in os.environ:
     includedirs.insert(0,os.environ['VIRTUAL_ENV'] + '/include')
     libdirs.insert(0,os.environ['VIRTUAL_ENV'] + '/lib')
