@@ -20,7 +20,7 @@ if os.path.exists("/usr/local/Cellar"):
     for pkg in ('icu4c', 'libxml2'):
         if os.path.isdir("/usr/local/Cellar/" + pkg):
             versiondir = None
-            for _versiondir in sorted(glob.glob("/usr/local/Cellar/")):
+            for _versiondir in sorted(glob.glob("/usr/local/Cellar/" + pkg + "/*")):
                 if os.path.isdir(_versiondir): versiondir = _versiondir
             if versiondir is not None:
                 if os.path.exists(versiondir + "/include"):
