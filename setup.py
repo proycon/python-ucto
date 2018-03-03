@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
 from Cython.Distutils import build_ext
+import platform
 import glob
 import os
 import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.4.2'
+VERSION = '0.4.3'
 
 
 includedirs = []
@@ -40,6 +41,11 @@ if 'INCLUDE_DIRS' in os.environ:
 if 'LIBRARY_DIRS' in os.environ:
     libdirs = list(os.environ['LIBRARY_DIRS'].split(':')) + libdirs
 
+if platform.system() == "Darwin":
+    extra_options = ["--stdlib=libc++"]
+else:
+    extra_options = []
+
 if sys.version < '3':
     extensions = [ Extension("ucto",
                     [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper2.pyx"],
@@ -47,7 +53,7 @@ if sys.version < '3':
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++0x'],
+                    extra_compile_args=['--std=c++0x'] + extra_options,
                     ) ]
 else:
     extensions = [ Extension("ucto",
@@ -56,7 +62,7 @@ else:
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++0x'],
+                    extra_compile_args=['--std=c++0x'] + extra_options,
                     ) ]
 
 
