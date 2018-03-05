@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
-from Cython.Distutils import build_ext
+from Cython.Build import cythonize
 import platform
 import glob
 import os
@@ -8,7 +8,7 @@ import sys
 
 from os.path import expanduser
 HOMEDIR = expanduser("~")
-VERSION = '0.4.3'
+VERSION = '0.5'
 
 
 includedirs = []
@@ -46,24 +46,14 @@ if platform.system() == "Darwin":
 else:
     extra_options = []
 
-if sys.version < '3':
     extensions = [ Extension("ucto",
-                    [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper2.pyx"],
+                    [  "ucto.pyx"],
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
                     libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++0x'] + extra_options,
-                    ) ]
-else:
-    extensions = [ Extension("ucto",
-                    [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper.pyx"],
-                    language='c++',
-                    include_dirs=includedirs,
-                    library_dirs=libdirs,
-                    libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++0x'] + extra_options,
-                    ) ]
+                    extra_compile_args=['--std=c++11'] + extra_options,
+                ) ]
 
 
 setup(
@@ -75,15 +65,13 @@ setup(
     license = "GPL",
     keywords = "tokenizer tokenization tokeniser tokenisation nlp computational_linguistics ucto",
     url = "https://github.com/proycon/python-ucto",
-    ext_modules = extensions,
-    cmdclass = {'build_ext': build_ext},
+    ext_modules = cythonize(extensions),
     requires=['ucto (>=0.9.6)'],
     install_requires=['Cython'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Text Processing :: Linguistic",
         "Programming Language :: Cython",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Operating System :: POSIX",
         "Intended Audience :: Developers",
