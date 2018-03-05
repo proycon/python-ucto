@@ -46,14 +46,14 @@ if platform.system() == "Darwin":
 else:
     extra_options = []
 
-    extensions = [ Extension("ucto",
-                    [  "ucto.pyx"],
-                    language='c++',
-                    include_dirs=includedirs,
-                    library_dirs=libdirs,
-                    libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++11'] + extra_options,
-                ) ]
+extensions = [ Extension("ucto",
+                [  "ucto.pyx"],
+                language='c++',
+                include_dirs=includedirs,
+                library_dirs=libdirs,
+                libraries=['ucto','folia'],
+                extra_compile_args=['--std=c++11'] + extra_options,
+            ) ]
 
 
 setup(
