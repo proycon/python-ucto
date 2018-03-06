@@ -6,28 +6,18 @@ import glob
 import os
 import sys
 
-from os.path import expanduser
-HOMEDIR = expanduser("~")
-VERSION = '0.4.3'
+VERSION = '0.4.4'
 
 
 includedirs = []
 libdirs = []
-if os.path.exists(HOMEDIR + "/local/include"): includedirs.append(HOMEDIR + '/local/include/')
-if os.path.exists(HOMEDIR + "/local/lib"): libdirs.append(HOMEDIR + '/local/lib/')
 
-if os.path.exists("/usr/local/Cellar"):
-   #we are running on Mac OS X with homebrew, stuff is in specific locations:
-    for pkg in ('icu4c', 'libxml2'):
-        if os.path.isdir("/usr/local/Cellar/" + pkg):
-            versiondir = None
-            for _versiondir in sorted(glob.glob("/usr/local/Cellar/" + pkg + "/*")):
-                if os.path.isdir(_versiondir): versiondir = _versiondir
-            if versiondir is not None:
-                if os.path.exists(versiondir + "/include"):
-                    includedirs.append(versiondir + "/include")
-                if os.path.exists(versiondir + "/lib"):
-                    libdirs.append(versiondir + "/lib")
+if platform.system() == "Darwin":
+    #we are running on Mac OS X with homebrew, stuff is in specific locations:
+    libdirs.append("/usr/local/opt/icu4c/lib")
+    includedirs.append("/usr/local/opt/icu4c/include")
+    libdirs.append("/usr/local/opt/libxml2/lib")
+    includedirs.append("/usr/local/opt/libxml2/include")
 
 #add some common default paths
 includedirs += ['/usr/include/', '/usr/include/libxml2','/usr/local/include/']
