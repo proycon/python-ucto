@@ -18,8 +18,8 @@ if platform.system() == "Darwin":
     includedirs.append("/usr/local/opt/icu4c/include")
     libdirs.append("/usr/local/opt/libxml2/lib")
     includedirs.append("/usr/local/opt/libxml2/include")
-    libdirs.append("/usr/local/opt/libtextcat/lib")
-    includedirs.append("/usr/local/opt/libtextcat/include/libtextcat")
+    #libdirs.append("/usr/local/opt/libtextcat/lib")
+    #includedirs.append("/usr/local/opt/libtextcat/include/libtextcat")
 
 #add some common default paths
 includedirs += ['/usr/include/', '/usr/include/libxml2','/usr/local/include/']
@@ -44,7 +44,7 @@ if sys.version < '3':
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
-                    libraries=['ucto','folia','textcat'],
+                    libraries=['ucto','folia'],
                     extra_compile_args=['--std=c++0x'] + extra_options,
                     ) ]
 else:
@@ -53,7 +53,7 @@ else:
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
-                    libraries=['ucto','folia','textcat'],
+                    libraries=['ucto','folia'],
                     extra_compile_args=['--std=c++0x'] + extra_options,
                     ) ]
 
