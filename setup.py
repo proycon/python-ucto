@@ -44,7 +44,7 @@ if sys.version < '3':
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
-                    libraries=['ucto','folia'],
+                    libraries=['ucto','folia','textcat'],
                     extra_compile_args=['--std=c++0x'] + extra_options,
                     ) ]
 else:
@@ -53,7 +53,7 @@ else:
                     language='c++',
                     include_dirs=includedirs,
                     library_dirs=libdirs,
-                    libraries=['ucto','folia'],
+                    libraries=['ucto','folia','textcat'],
                     extra_compile_args=['--std=c++0x'] + extra_options,
                     ) ]
 
