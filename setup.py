@@ -13,11 +13,13 @@ includedirs = []
 libdirs = []
 
 if platform.system() == "Darwin":
-    #we are running on Mac OS X with homebrew, stuff is in specific locations:
+    #we are running on Mac OS X (with homebrew hopefully), stuff is in specific locations:
     libdirs.append("/usr/local/opt/icu4c/lib")
     includedirs.append("/usr/local/opt/icu4c/include")
     libdirs.append("/usr/local/opt/libxml2/lib")
     includedirs.append("/usr/local/opt/libxml2/include")
+    libdirs.append("/usr/local/opt/libtextcat/lib")
+    includedirs.append("/usr/local/opt/libtextcat/include/libtextcat")
 
 #add some common default paths
 includedirs += ['/usr/include/', '/usr/include/libxml2','/usr/local/include/']
