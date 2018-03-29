@@ -6,7 +6,7 @@ import glob
 import os
 import sys
 
-VERSION = '0.4.4'
+VERSION = '0.4.5'
 
 
 includedirs = []
@@ -34,9 +34,9 @@ if 'LIBRARY_DIRS' in os.environ:
     libdirs = list(os.environ['LIBRARY_DIRS'].split(':')) + libdirs
 
 if platform.system() == "Darwin":
-    extra_options = ["--stdlib=libc++"]
+    extra_options = ["--stdlib=libc++",'-D U_USING_ICU_NAMESPACE=1']
 else:
-    extra_options = []
+    extra_options = ['-D U_USING_ICU_NAMESPACE=1']
 
 if sys.version < '3':
     extensions = [ Extension("ucto",
