@@ -54,10 +54,10 @@ class Token:
         return self.role & TokenRole.NEWPARAGRAPH
 
     def isbeginofquote(self):
-        return self.role & TokenRole.BEGINOFQUOTE
+        return self.role & TokenRole.BEGINQUOTE
 
     def isendofquote(self):
-        return self.role & TokenRole.ENDOFQUOTE
+        return self.role & TokenRole.ENDQUOTE
 
     def nospace(self):
         return self.role & TokenRole.NOSPACE
