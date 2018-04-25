@@ -6,7 +6,7 @@ import glob
 import os
 import sys
 
-VERSION = '0.4.6'
+VERSION = '0.4.7'
 
 
 includedirs = []

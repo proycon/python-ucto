@@ -74,7 +74,7 @@ cdef class Tokenizer:
             elif arg == 'uppercase':
                 self.tok.setUppercase(value is True)
             elif arg == 'sentencedetection':
-                self.tok.setSentenceDetection(value is True)
+                pass #deprecated
             elif arg == 'paragraphdetection':
                 self.tok.setParagraphDetection(value is True)
             elif arg == 'quotedetection':
