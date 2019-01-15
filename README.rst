@@ -1,6 +1,9 @@
 .. image:: http://applejack.science.ru.nl/lamabadge.php/python-ucto
    :target: http://applejack.science.ru.nl/languagemachines/
 
+.. image:: https://zenodo.org/badge/20030361.svg
+   :target: https://zenodo.org/badge/latestdoi/20030361
+
 Ucto for Python
 =================
 
