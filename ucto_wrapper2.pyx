@@ -102,25 +102,28 @@ cdef class Tokenizer:
         """Run ucto from inputfile to outputfile (like command line tool)"""
         self.tok.tokenize(inputfile.encode('utf-8'), outputfile.encode('utf-8'))
 
+
+
+
     def process(self, unicode line):
         """Feed text to the tokeniser. This needs not be a single line."""
-        return self.tok.tokenizeLine(line.encode('utf-8'))
+        self.tok.tokenizeLine(line.encode('utf-8'))
 
     def sentences(self):
         cdef vector[string] results = self.tok.getSentences()
         cdef vector[string].iterator it = results.begin()
         cdef int sentencecount = len(results)
-        self.tok.flushSentences(sentencecount)
         while it != results.end():
             yield unicode(deref(it), 'utf-8').replace("<utt>",'')
             inc(it)
 
     def __iter__(self):
-        cdef int c = self.tok.countSentences(True) #forces buffer
         cdef vector[ucto_classes.Token] v
         cdef vector[ucto_classes.Token].iterator it
-        for i in range(0,c):
-            v = self.tok.getSentence(i)
+        while True:
+            v = self.tok.popSentence()
+            if v.empty():
+                break
             it = v.begin()
             while it != v.end():
                 tokentext = unicode(deref(it).texttostring(), 'utf-8')
@@ -128,7 +131,17 @@ cdef class Tokenizer:
                 role = deref(it).role
                 yield Token(tokentext, tokentype, role)
                 inc(it)
-        self.tok.flushSentences(c)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
