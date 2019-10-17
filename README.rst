@@ -4,6 +4,10 @@
 .. image:: https://zenodo.org/badge/20030361.svg
    :target: https://zenodo.org/badge/latestdoi/20030361
 
+.. image:: https://www.repostatus.org/badges/latest/active.svg
+   :alt: Project Status: Active – The project has reached a stable, usable state and is being actively developed.
+   :target: https://www.repostatus.org/#active
+
 Ucto for Python
 =================
 
