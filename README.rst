@@ -128,7 +128,7 @@ be either plain text, or in the `FoLiA XML format <https://proycon.github.io/fol
 are two keyword arguments to indicate this:
 
 * ``xmlinput`` or ``foliainput`` -- A boolean that indicates whether the input is FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``.
-* ``xmloutput`` or ``foliaoutput`` -- A boolean that indicates whether the input is FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``.
+* ``xmloutput`` or ``foliaoutput`` -- A boolean that indicates whether the input is FoLiA XML (``True``) or plain text (``False``). Defaults to ``False``. If this option is enabled, you can set an additional keyword parameter ``docid`` (string) to set the document ID.
 
 An example for plain text input and FoLiA output:
 
@@ -139,14 +139,13 @@ An example for plain text input and FoLiA output:
 
 FoLiA documents retain all the information ucto can output, unlike the plain
 text representation. These documents can be read and manipulated from Python using the
-``pynlpl.formats.folia`` module, part of `PyNLPl
-<https://github.com/proycon/pynlpl>`_. FoLiA is especially recommended if
+`FoLiaPy library <https://github.com/proycon/foliapy>`_. FoLiA is especially recommended if
 you intend to further enrich the document with linguistic annotation. A small
-example of reading ucto's FoLiA output using this library follows, but consult the `documentation <http://pynlpl.readthedocs.io/en/latest/folia.html>`_ for more:
+example of reading ucto's FoLiA output using this library follows, but consult the `documentation <https://folia.readthedocs.io/en/latest/>`_ for more:
 
 .. code:: python
 
-    import pynlpl.formats.folia
+    import folia.main as folia
     doc = folia.Document(file="ucto_output.folia.xml")
     for paragraph in doc.paragraphs():
         for sentence in paragraph.sentence():
