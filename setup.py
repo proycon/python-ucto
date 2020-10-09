@@ -39,24 +39,14 @@ if platform.system() == "Darwin":
 else:
     extra_options = ['-D U_USING_ICU_NAMESPACE=1']
 
-if sys.version < '3':
-    extensions = [ Extension("ucto",
-                    [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper2.pyx"],
-                    language='c++',
-                    include_dirs=includedirs,
-                    library_dirs=libdirs,
-                    libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++0x'] + extra_options,
-                    ) ]
-else:
-    extensions = [ Extension("ucto",
-                    [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper.pyx"],
-                    language='c++',
-                    include_dirs=includedirs,
-                    library_dirs=libdirs,
-                    libraries=['ucto','folia'],
-                    extra_compile_args=['--std=c++0x'] + extra_options,
-                    ) ]
+extensions = [ Extension("ucto",
+                [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper.pyx"],
+                language='c++',
+                include_dirs=includedirs,
+                library_dirs=libdirs,
+                libraries=['ucto','folia'],
+                extra_compile_args=['--std=c++0x'] + extra_options,
+                ) ]
 
 
 setup(
@@ -76,7 +66,6 @@ setup(
         "Development Status :: 4 - Beta",
         "Topic :: Text Processing :: Linguistic",
         "Programming Language :: Cython",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Operating System :: POSIX",
         "Intended Audience :: Developers",
