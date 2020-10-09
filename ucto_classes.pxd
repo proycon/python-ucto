@@ -32,6 +32,8 @@ cdef extern from "ucto/tokenize.h" namespace "Tokenizer":
         bool setSentencePerLineInput(bool)
         bool setXMLOutput(bool, string & docid)
         bool setXMLInput(bool)
+        bool getLowercase()
+        bool getUppercase()
         int setDebug(int)
 
         void tokenize(string,string) nogil

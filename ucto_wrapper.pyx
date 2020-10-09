@@ -128,6 +128,10 @@ cdef class Tokenizer:
                 tokentext = str(deref(it).texttostring(), 'utf-8')
                 tokentype = str(deref(it).typetostring(), 'utf-8')
                 role = deref(it).role
+                if self.getLowercase():
+                    tokentext = tokentext.lower()
+                elif self.getUppercase():
+                    tokentext = tokentext.upper()
                 yield Token(tokentext, tokentype, role)
                 inc(it)
 
