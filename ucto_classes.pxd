@@ -26,7 +26,6 @@ cdef extern from "ucto/tokenize.h" namespace "Tokenizer":
 
         bool setLowercase(bool)
         bool setUppercase(bool)
-        bool setSentenceDetection(bool)
         bool setParagraphDetection(bool)
         bool setQuoteDetection(bool)
         bool setSentencePerLineOutput(bool)
