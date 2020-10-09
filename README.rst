@@ -20,7 +20,6 @@ Easy
 ~~~~~~~~~~
 
 
-* On **Debian/Ubuntu Linux**: check if the package ``python-ucto`` or ``python3-ucto`` is available already.
 * On **Arch Linux**, use the `python-ucto-git <https://aur.archlinux.org/packages/python-ucto-git/>_` package from the Arch User Repository (AUR).
 * In all other cases, for easy installation of both python-ucto as well as ucto itself, please use our LaMachine distribution (https://proycon.github.io/LaMachine)
 
@@ -96,13 +95,11 @@ obtained by iterating over it, after which the buffer will be cleared:
         elif not token.nospace():
             print(" ",end="")
 
-The ``process()`` method takes a single string (``str`` in Python 3,
-``unicode`` in Python 2), as parameter. The string may contain newlines, and
-newlines are not necessary sentence bounds unless you instantiated the
-tokenizer with ``sentenceperlineinput=True``.
+The ``process()`` method takes a single string (``str``), as parameter. The string may contain newlines, and newlines
+are not necessary sentence bounds unless you instantiated the tokenizer with ``sentenceperlineinput=True``.
 
 Each token is an instance of ``ucto.Token``. It can be serialised to string
-using ``str()`` (Python 3), as shown in the example above. In Python 2, use ``unicode()`` instead.
+using ``str()`` as shown in the example above.
 
 The following methods are available on ``ucto.Token`` instances:
 * ``isendofsentence()`` -- Returns a boolean indicating whether this is the last token of a sentence.
@@ -157,7 +154,7 @@ example of reading ucto's FoLiA output using this library follows, but consult t
 Test and Example
 ~~~~~~~~~~~~~~~~~~~
 
-Run and inspect ``example.py`` (Python 3) or ``example2.py`` (Python 2) for examples.
+Run and inspect ``example.py``.
 
 
 
