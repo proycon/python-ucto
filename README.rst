@@ -67,8 +67,6 @@ arguments:
 * ``sentenceperlineoutput`` (defaults to ``False``) -- Set this if you want
   each sentence to be outputted on one line. Has not much effect within the
   context of Python.
-* ``sentencedetection`` (defaults to ``True``) -- Do sentence boundary
-  detection.
 * ``paragraphdetection`` (defaults to ``True``) -- Do paragraph detection.
   Paragraphs are simply delimited by an empty line.
 * ``quotedetection`` (defaults to ``False``) -- Set this if you want to enable

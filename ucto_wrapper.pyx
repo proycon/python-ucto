@@ -16,6 +16,7 @@ from cython import address
 from libc.stdint cimport *
 from libcpp.utility cimport pair
 import os.path
+import sys
 cimport libfolia_classes
 cimport ucto_classes
 
@@ -74,7 +75,7 @@ cdef class Tokenizer:
             elif arg == 'uppercase':
                 self.tok.setUppercase(value is True)
             elif arg == 'sentencedetection':
-                pass #deprecated
+                sys.stderr.write("[python-ucto] Argument 'sentencedetection' is deprecated and has no effect, it is always enabled.\n")
             elif arg == 'paragraphdetection':
                 self.tok.setParagraphDetection(value is True)
             elif arg == 'quotedetection':
@@ -116,6 +117,12 @@ cdef class Tokenizer:
             yield str(deref(it), 'utf-8').replace("<utt>",'')
             inc(it)
 
+    def lowercase(self):
+        return self.tok.getLowercase()
+
+    def uppercase(self):
+        return self.tok.getLowercase()
+
     def __iter__(self):
         cdef vector[ucto_classes.Token] v
         cdef vector[ucto_classes.Token].iterator it
@@ -128,9 +135,9 @@ cdef class Tokenizer:
                 tokentext = str(deref(it).texttostring(), 'utf-8')
                 tokentype = str(deref(it).typetostring(), 'utf-8')
                 role = deref(it).role
-                if self.getLowercase():
+                if self.lowercase():
                     tokentext = tokentext.lower()
-                elif self.getUppercase():
+                elif self.uppercase():
                     tokentext = tokentext.upper()
                 yield Token(tokentext, tokentype, role)
                 inc(it)
