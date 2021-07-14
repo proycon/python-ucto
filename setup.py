@@ -6,7 +6,7 @@ import glob
 import os
 import sys
 
-VERSION = '0.5.2'
+VERSION = '0.5.3'
 
 
 includedirs = []
@@ -60,7 +60,7 @@ setup(
     url = "https://github.com/proycon/python-ucto",
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
-    requires=['ucto (>=0.9.6)'],
+    requires=['ucto (>=0.23)'],
     install_requires=['Cython'],
     classifiers=[
         "Development Status :: 4 - Beta",
