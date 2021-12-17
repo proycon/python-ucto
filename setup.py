@@ -60,7 +60,7 @@ setup(
     url = "https://github.com/proycon/python-ucto",
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
-    requires=['ucto (>=0.23)'],
+    requires=['ucto (>=0.24.1)'],
     install_requires=['Cython'],
     classifiers=[
         "Development Status :: 4 - Beta",

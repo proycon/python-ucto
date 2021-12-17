@@ -110,7 +110,7 @@ cdef class Tokenizer:
         self.tok.tokenizeLine(line.encode('utf-8'))
 
     def sentences(self):
-        cdef vector[string] results = self.tok.getSentences()
+        cdef vector[string] results = self.tok.getUTF8Sentences()
         cdef vector[string].iterator it = results.begin()
         cdef int sentencecount = len(results)
         while it != results.end():

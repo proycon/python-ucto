@@ -38,5 +38,5 @@ cdef extern from "ucto/tokenize.h" namespace "Tokenizer":
 
         void tokenize(string,string) nogil
         int tokenizeLine(string &) nogil
-        vector[string] getSentences() nogil
+        vector[string] getUTF8Sentences() nogil
         vector[Token] popSentence() nogil
