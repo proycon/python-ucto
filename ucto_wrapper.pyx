@@ -151,14 +151,22 @@ def localpath():
 
 def installdata(targetdir=None, version=UCTODATAVERSION):
     if targetdir is None:
-        targetdir = os.path.join(localpath(),"ucto")
+        targetdir = localpath()
+    else:
+        targetdir = os.path.join(targetdir,"ucto")
     if os.path.exists(targetdir):
-        print(f"Uctodata configuration directory already exists: {uctodir}, refusing to overwrite, please remove it first if you want to install all data anew.", file=sys.stderr)
+        print(f"Uctodata configuration directory already exists: {targetdir}, refusing to overwrite, please remove it first if you want to install all data anew.", file=sys.stderr)
     else:
         tmpdir=os.environ.get("TMPDIR","/tmp")
         if os.system(f"cd {tmpdir} && mkdir -p {targetdir} && wget -O uctodata.tar.gz https://github.com/LanguageMachines/uctodata/releases/download/v{version}/uctodata-{version}.tar.gz && tar -xzf uctodata.tar.gz && cd uctodata-{version} && mv config/* {targetdir}/ && cd .. && rm -Rf uctodata-{version} && rm -Rf uctodata.tar.gz") != 0:
             raise Exception("Installation failed")
         print(f"Installation of uctodata {version} complete", file=sys.stderr)
+        if os.path.isdir("/usr/share/libexttextcat"):
+            if os.system(f"cd {targetdir} && wget -O textcat.cfg https://raw.githubusercontent.com/LanguageMachines/ucto/master/config/textcat.cfg") != 0:
+                raise Exception("Installation of textcat.cfg failed")
+        else:
+            print("Language detection will not be available unless you install libexttextcat and rerun installdata()", file=sys.stderr)
+
 
 
 

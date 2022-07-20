@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
 from Cython.Distutils import build_ext
+from Cython.Build import cythonize
 import platform
-import glob
 import os
 import sys
 
@@ -39,14 +39,14 @@ if platform.system() == "Darwin":
 else:
     extra_options = ['-D U_USING_ICU_NAMESPACE=1']
 
-extensions = [ Extension("ucto",
+extensions = cythonize([ Extension("ucto",
                 [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper.pyx"],
                 language='c++',
                 include_dirs=includedirs,
                 library_dirs=libdirs,
                 libraries=['ucto','folia'],
                 extra_compile_args=['--std=c++0x'] + extra_options,
-                ) ]
+                ) ], compiler_directives={"language_level": "3"})
 
 
 setup(
