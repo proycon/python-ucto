@@ -6,7 +6,7 @@ import glob
 import os
 import sys
 
-VERSION = '0.5.3'
+VERSION = '0.5.4' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
 
 
 includedirs = []
@@ -55,15 +55,15 @@ setup(
     author = 'Maarten van Gompel',
     author_email = "proycon@anaproy.nl",
     description = ("This is a Python binding to the tokenizer Ucto. Tokenisation is one of the first step in almost any Natural Language Processing task, yet it is not always as trivial a task as it appears to be. This binding makes the power of the ucto tokeniser available to Python. Ucto itself is a regular-expression based, extensible, and advanced tokeniser written in C++ (https://languagemachines.github.io/ucto)."),
-    license = "GPL",
+    license = "GPLv3",
     keywords = "tokenizer tokenization tokeniser tokenisation nlp computational_linguistics ucto",
     url = "https://github.com/proycon/python-ucto",
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
-    requires=['ucto (>=0.24.1)'],
+    requires=['ucto (>=0.25)'],
     install_requires=['Cython'],
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Topic :: Text Processing :: Linguistic",
         "Programming Language :: Cython",
         "Programming Language :: Python :: 3",

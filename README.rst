@@ -16,23 +16,48 @@ This is a Python binding to the tokeniser Ucto. Tokenisation is one of the first
 Installation
 ----------------
 
-Easy
+Linux
 ~~~~~~~~~~
 
+On modern Linux distributions, we recommend you use a Python virtual environment and install using ``pip``::
 
-* On **Arch Linux**, use the `python-ucto-git <https://aur.archlinux.org/packages/python-ucto-git/>_` package from the Arch User Repository (AUR).
-* In all other cases, for easy installation of both python-ucto as well as ucto itself, please use our LaMachine distribution (https://proycon.github.io/LaMachine)
+    pip install python-ucto
 
-Manual (Advanced)
-~~~~~~~~~~~~~~~~~~
+When possible on your system (glibc >= 2.28, x86_64), this will install the binary
+Python wheels *that include ucto and all necessary dependencies* **except for**
+uctodata. To download and install the data (in ``~/.config/ucto``) you then only need to
+run the following once::
 
-* Make sure to first install ucto itself (https://languagemachines.github.io/ucto) and all its dependencies.
-* Install Cython if not yet available on your system: ``$ sudo apt-get cython cython3`` (Debian/Ubuntu, may differ for others)
-* Clone this repository and run:  ``$ sudo python setup.py install``   (Make sure to use the desired version of python)
+    python -c "import ucto; ucto.installdata()"
 
-Advanced note: If the ucto libraries and includes are installed in a non-standard location,
-you can set environment variables INCLUDE_DIRS and LIBRARY_DIRS to point to
-them prior to invocation of ``setup.py install``.
+If the binary wheels are not available for your distribution, you will need to first install Ucto yourself.
+
+Alpine Linux
+~~~~~~~~~~~~~~
+
+First install Cython and Ucto (``apk add cython ucto ucto-dev``), then ``pip install python-ucto`` (preferably in a Python virtual environment)
+
+Arch Linux
+~~~~~~~~~~~~~~
+
+You can alternatively use the `AUR package <https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-ucto-git>`_ .
+
+macOS
+~~~~~~~~
+
+First use `homebrew <https://brew.sh/>`_ to install `Ucto <https://languagemachines.github.io/ucto>`_::
+
+    brew tap fbkarsdorp/homebrew-lamachine
+    brew install ucto
+
+Then install this binding using ``pip`` (preferably in a Python virtual environment)::
+
+    pip install python-ucto
+
+Windows
+~~~~~~~~~~
+
+Not supported natively, but you should be able to use the Ucto python binding if you use WSL.
 
 Usage
 ---------------------

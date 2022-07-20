@@ -20,6 +20,8 @@ import sys
 cimport libfolia_classes
 cimport ucto_classes
 
+UCTODATAVERSION = "0.8"
+
 class TokenRole:
     NOROLE                      = 0
     NOSPACE                     = 1
@@ -143,6 +145,20 @@ cdef class Tokenizer:
                 inc(it)
 
 
+def localpath():
+    xdg_config_dir = os.environ.get("XDG_CONFIG_HOME", os.path.join(os.environ.get("HOME",""), ".config"))
+    return os.environ.get("UCTODATAPATH", os.path.join(xdg_config_dir,"ucto") )
+
+def installdata(targetdir=None, version=UCTODATAVERSION):
+    if targetdir is None:
+        targetdir = os.path.join(localpath(),"ucto")
+    if os.path.exists(targetdir):
+        print(f"Uctodata configuration directory already exists: {uctodir}, refusing to overwrite, please remove it first if you want to install all data anew.", file=sys.stderr)
+    else:
+        tmpdir=os.environ.get("TMPDIR","/tmp")
+        if os.system(f"cd {tmpdir} && mkdir -p {targetdir} && wget -O uctodata.tar.gz https://github.com/LanguageMachines/uctodata/releases/download/v{version}/uctodata-{version}.tar.gz && tar -xzf uctodata.tar.gz && cd uctodata-{version} && mv config/* {targetdir}/ && cd .. && rm -Rf uctodata-{version} && rm -Rf uctodata.tar.gz") != 0:
+            raise Exception("Installation failed")
+        print(f"Installation of uctodata {version} complete", file=sys.stderr)
 
 
 
