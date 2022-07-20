@@ -6,7 +6,7 @@ import platform
 import os
 import sys
 
-VERSION = '0.5.4' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
+VERSION = '0.6.0' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
 
 
 includedirs = []
