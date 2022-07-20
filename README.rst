@@ -87,20 +87,20 @@ list of available configuration in the latest version.
 The constructor for the ``Tokenizer`` class takes the following keyword
 arguments:
 
-* ``lowercase`` (defaults to ``False``) -- Lowercase all text
-* ``uppercase`` (defaults to ``False``) -- Uppercase all text
-* ``sentenceperlineinput`` (defaults to ``False``) -- Set this to True if each
-  sentence in your input is on one line already and you do not require further
-  sentence boundary detection from ucto.
-* ``sentenceperlineoutput`` (defaults to ``False``) -- Set this if you want
-  each sentence to be outputted on one line. Has not much effect within the
-  context of Python.
-* ``paragraphdetection`` (defaults to ``True``) -- Do paragraph detection.
-  Paragraphs are simply delimited by an empty line.
-* ``quotedetection`` (defaults to ``False``) -- Set this if you want to enable
-  the experimental quote detection, to detect quoted text (enclosed within some
-  sort of single/double quote)
-* ``debug`` (defaults to ``False``) -- Enable verbose debug output
+    * ``lowercase`` (defaults to ``False``) -- Lowercase all text
+    * ``uppercase`` (defaults to ``False``) -- Uppercase all text
+    * ``sentenceperlineinput`` (defaults to ``False``) -- Set this to True if each
+      sentence in your input is on one line already and you do not require further
+      sentence boundary detection from ucto.
+    * ``sentenceperlineoutput`` (defaults to ``False``) -- Set this if you want
+      each sentence to be outputted on one line. Has not much effect within the
+      context of Python.
+    * ``paragraphdetection`` (defaults to ``True``) -- Do paragraph detection.
+      Paragraphs are simply delimited by an empty line.
+    * ``quotedetection`` (defaults to ``False``) -- Set this if you want to enable
+      the experimental quote detection, to detect quoted text (enclosed within some
+      sort of single/double quote)
+    * ``debug`` (defaults to ``False``) -- Enable verbose debug output
 
 Text is passed to the tokeniser using the ``process()`` method, this method
 returns the number of tokens rather than the tokens itself. It may be called
