@@ -31,7 +31,7 @@ if [ "$ID" = "almalinux" ] || [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then
 fi
 
 [ -z "$PREFIX" ] && PREFIX="/usr/local/"
-PWD="$(pwd)"
+PREVPWD="$(pwd)"
 BUILDDIR="$(mktemp -dt "build-deps.XXXXXX")"
 cd "$BUILDDIR"
 for PACKAGE in tklauser/libtar LanguageMachines/ticcutils LanguageMachines/libfolia LanguageMachines/uctodata LanguageMachines/ucto; do
@@ -59,6 +59,6 @@ for PACKAGE in tklauser/libtar LanguageMachines/ticcutils LanguageMachines/libfo
     make install
     cd ..
 done
-cd "$PWD"
+cd "$PREVPWD"
 [ -n "$BUILDDIR" ] && rm -Rf "$BUILDDIR"
 echo "Dependencies installed" >&2

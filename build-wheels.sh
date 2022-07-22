@@ -14,7 +14,6 @@ SYSTEM_PACKAGES=$3
 PRE_BUILD_COMMAND=$4
 PACKAGE_PATH=$5
 PIP_WHEEL_ARGS=$6
-BUILD_DEPS_OPTS=$7
 
 # Temporary workaround for LD_LIBRARY_PATH issue. See
 # https://github.com/RalfG/python-wheels-manylinux-build/issues/26
@@ -45,7 +44,7 @@ cd /io
 arrPY_VERSIONS=(${PY_VERSIONS// / })
 for PY_VER in "${arrPY_VERSIONS[@]}"; do
     # Update pip
-    "/opt/python/$PY_VER/bin/pip" install --upgrade --no-cache-dir pip
+    "/opt/python/$PY_VER/bin/pip" install --upgrade --no-cache-dir pip || echo "-------------- ERROR: Pip upgrade failed -------------- trying to continue regardless...">&2
 
     # Check if requirements were passed
     if [ -n "$BUILD_REQUIREMENTS" ]; then
