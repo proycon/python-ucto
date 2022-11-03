@@ -27,6 +27,9 @@ if [ -n "$SYSTEM_PACKAGES" ]; then
         apt-get install -y $SYSTEM_PACKAGES  || { echo "Installing apt package(s) failed."; exit 1; }
     elif command -v yum >/dev/null; then
         yum install -y $SYSTEM_PACKAGES  || { echo "Installing yum package(s) failed."; exit 1; }
+    elif command -v apk >/dev/null; then
+        apk add $SYSTEM_PACKAGES rsync || { echo "Installing apk package(s) failed."; exit 1; }
+        rsync -av --ignore-existing /usr/share/aclocal/*.m4 /usr/local/share/aclocal/ #the image has it's own aclocal installation, copy autoconf-archive files that do not exist yet (and hope for the best)
     else
         echo "Package managers apt or yum not found."; exit 1;
     fi
@@ -44,7 +47,7 @@ cd /io
 arrPY_VERSIONS=(${PY_VERSIONS// / })
 for PY_VER in "${arrPY_VERSIONS[@]}"; do
     # Update pip
-    "/opt/python/$PY_VER/bin/pip" install --upgrade --no-cache-dir pip || echo "-------------- ERROR: Pip upgrade failed -------------- trying to continue regardless...">&2
+    "/opt/python/$PY_VER/bin/pip" install --upgrade --no-cache-dir pip
 
     # Check if requirements were passed
     if [ -n "$BUILD_REQUIREMENTS" ]; then
@@ -68,4 +71,8 @@ if [[ -f "$failed_wheels" ]]; then
 fi
 
 echo "Succesfully build wheels:"
-find . -type f -iname "*-manylinux*.whl"
+if command -v apk >/dev/null; then
+    find . -type f -iname "*-musllinux*.whl"
+else
+    find . -type f -iname "*-manylinux*.whl"
+fi
