@@ -7,6 +7,6 @@ COPY . /usr/src/python-ucto
 RUN BUILD_PACKAGES="build-base libtool libtar-dev bzip2-dev icu-dev libxml2-dev libexttextcat-dev python3-dev" &&\
     mkdir -p /usr/src/python-ucto &&\
     apk add python3 py3-wheel py3-pip cython $BUILD_PACKAGES &&\
-    cd /usr/src/python-ucto && pip install . && apk del $BUILD_PACKAGES
+    cd /usr/src/python-ucto && pip install . && apk del $BUILD_PACKAGES && rm -Rf /usr/src/python-ucto
 
 ENTRYPOINT [ "python3" ]
