@@ -61,7 +61,17 @@ Then install this binding using ``pip`` (preferably in a Python virtual environm
 Windows
 ~~~~~~~~~~
 
-Not supported natively, but you should be able to use the Ucto python binding if you use WSL.
+Not supported natively, but you should be able to use the Ucto python binding if you use WSL, or using Docker containers (see below).
+
+Docker/OCI Containers
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A Docker/OCI container image is available containing Python, ucto, and python-ucto::
+
+    docker pull proycon/python-ucto
+    docker run -t -i proycon/python-ucto
+
+You can also build the container from scratch from this repository with the included `Dockerfile`.
 
 Usage
 ---------------------
