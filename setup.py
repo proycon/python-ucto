@@ -6,7 +6,7 @@ import platform
 import os
 import sys
 
-VERSION = '0.6.0' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
+VERSION = '0.6.1' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
 
 
 includedirs = []
@@ -14,13 +14,23 @@ libdirs = []
 
 if platform.system() == "Darwin":
     #we are running on Mac OS X (with homebrew hopefully), stuff is in specific locations:
-    libdirs.append("/usr/local/opt/icu4c/lib")
-    includedirs.append("/usr/local/opt/icu4c/include")
-    libdirs.append("/usr/local/opt/libxml2/lib")
-    includedirs.append("/usr/local/opt/libxml2/include")
-    includedirs.append("/usr/local/opt/libxml2/include/libxml2")
-    #libdirs.append("/usr/local/opt/libtextcat/lib")
-    #includedirs.append("/usr/local/opt/libtextcat/include/libtextcat")
+    if platform.machine().lower() == "arm64":
+        libdirs.append("/opt/homebrew/lib")
+        includedirs.append("/opt/homebrew/include")
+        libdirs.append("/opt/homebrew/icu4c/lib")
+        includedirs.append("/opt/homebrew/icu4c/include")
+        libdirs.append("/opt/homebrew/libxml2/lib")
+        includedirs.append("/opt/homebrew/libxml2/include")
+        includedirs.append("/opt/homebrew/libxml2/include/libxml2")
+    else:
+        libdirs.append("/usr/local/opt/icu4c/lib")
+        includedirs.append("/usr/local/opt/icu4c/include")
+        libdirs.append("/usr/local/opt/libxml2/lib")
+        includedirs.append("/usr/local/opt/libxml2/include")
+        includedirs.append("/usr/local/opt/libxml2/include/libxml2")
+        #libdirs.append("/usr/local/opt/libtextcat/lib")
+        #includedirs.append("/usr/local/opt/libtextcat/include/libtextcat")
+
 
 #add some common default paths
 includedirs += ['/usr/include/', '/usr/include/libxml2','/usr/local/include/']
@@ -62,6 +72,7 @@ setup(
     cmdclass = {'build_ext': build_ext},
     requires=['ucto (>=0.25)'],
     install_requires=['Cython'],
+    data_files = [("sources",["ucto_wrapper.pyx"])],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Topic :: Text Processing :: Linguistic",
