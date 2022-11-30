@@ -1,3 +1,5 @@
+#Note: This script does not used build-wheels.sh nor the Makefile included in this repo (that's for local usage)
+
 name: Build Wheels
 
 on: [workflow_dispatch]
@@ -26,11 +28,11 @@ jobs:
            CIBW_ARCHS_MACOS: "x86_64 arm64"
            CIBW_BEFORE_ALL_LINUX: >
               if command -v apt-get; then
-                apt-get -y git libicu-dev libxml2-dev libexttextcat-dev libxslt1-dev libbz2-dev zlib1g-dev libtar-dev autoconf automake autoconf-archive libtool autotools-dev gcc g++ make
+                apt-get -y git libicu-dev libxml2-dev libexttextcat-dev libxslt1-dev libbz2-dev zlib1g-dev autoconf automake autoconf-archive libtool autotools-dev gcc g++ make
               elif command -v yum; then
                 yum install -y git libicu-devel libxml2-devel libxslt-devel libexttextcat zlib-devel bzip2-devel libtool autoconf-archive autoconf automake m4 wget
               elif command -v apk; then
-                apk add build-base git autoconf-archive autoconf automake libtool libtar-dev bzip2-dev icu-dev libxml2-dev libexttextcat-dev libtool libtar-dev
+                apk add build-base git autoconf-archive autoconf automake libtool bzip2-dev icu-dev libxml2-dev libexttextcat-dev libtool
               fi &&
               ./build-deps.sh
            CIBW_BEFORE_ALL_MACOS: >
