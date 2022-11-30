@@ -35,6 +35,7 @@ jobs:
            CIBW_BEFORE_ALL_MACOS: >
               brew tap fbkarsdorp/homebrew-lamachine &&
               brew install ucto
+           CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux_2_28_x86_64
 
       - uses: actions/upload-artifact@v3
         with:
