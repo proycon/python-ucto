@@ -16,14 +16,11 @@ This is a Python binding to the tokeniser Ucto. Tokenisation is one of the first
 Installation
 ----------------
 
-Linux
-~~~~~~~~~~
-
-On modern Linux distributions, we recommend you use a Python virtual environment and install using ``pip``::
+We recommend you use a Python virtual environment and install using ``pip``::
 
     pip install python-ucto
 
-When possible on your system (glibc >= 2.28, x86_64), this will install the binary
+When possible on your system, this will install the binary
 Python wheels *that include ucto and all necessary dependencies* **except for**
 uctodata. To download and install the data (in ``~/.config/ucto``) you then only need to
 run the following once::
@@ -34,34 +31,18 @@ If you want language detection support, ensure you the have `libexttextcat`
 package (if provided by your distribution) installed prior to executing the
 above command.
 
-If the binary wheels are not available for your distribution, you will need to first install Ucto yourself.
+If the binary wheels are not available for your system, you will need to first install `Ucto <https://github.com/LanguageMachines/ucto>`_ yourself and then run ``pip install python-ucto``, it will then be compiled from source.
 
-Alpine Linux
-~~~~~~~~~~~~~~
+On Arch Linux, you can alternatively use the `AUR package <https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-ucto-git>`_ .
 
-First install Cython and Ucto (``apk add cython ucto ucto-dev``), then ``pip install python-ucto`` (preferably in a Python virtual environment)
-
-Arch Linux
-~~~~~~~~~~~~~~
-
-You can alternatively use the `AUR package <https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-ucto-git>`_ .
-
-macOS
-~~~~~~~~
-
-First use `homebrew <https://brew.sh/>`_ to install `Ucto <https://languagemachines.github.io/ucto>`_::
+On macOS; use `homebrew <https://brew.sh/>`_ to install `Ucto <https://languagemachines.github.io/ucto>`_::
 
     brew tap fbkarsdorp/homebrew-lamachine
     brew install ucto
 
-Then install this binding using ``pip`` (preferably in a Python virtual environment)::
+On Alpine Linux, run: ``apk add cython ucto ucto-dev``
 
-    pip install python-ucto
-
-Windows
-~~~~~~~~~~
-
-Not supported natively, but you should be able to use the Ucto python binding if you use WSL, or using Docker containers (see below).
+Windows is not supported natively at all, but you should be able to use the Ucto python binding if you use WSL, or using Docker containers (see below).
 
 Docker/OCI Containers
 ~~~~~~~~~~~~~~~~~~~~~~~
