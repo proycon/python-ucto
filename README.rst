@@ -31,7 +31,10 @@ If you want language detection support, ensure you the have `libexttextcat`
 package (if provided by your distribution) installed prior to executing the
 above command.
 
-If the binary wheels are not available for your system, you will need to first install `Ucto <https://github.com/LanguageMachines/ucto>`_ yourself and then run ``pip install python-ucto``, it will then be compiled from source.
+If the binary wheels are not available for your system, you will need to first
+install `Ucto <https://github.com/LanguageMachines/ucto>`_ yourself and then
+run ``pip install python-ucto`` to install this python binding, it will then be
+compiled from source.
 
 On Arch Linux, you can alternatively use the `AUR package <https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-ucto-git>`_ .
 
