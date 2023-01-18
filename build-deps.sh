@@ -36,7 +36,7 @@ if [ "$ID" = "almalinux" ] || [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then
             wget https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.14.tar.xz
             unxz libxml2-2.9.14.tar.xz
             tar -xf libxml2-2.9.14.tar
-            cd libxml2-2.9.14 && ./configure --prefix=/usr/ && make && make install
+            cd libxml2-2.9.14 && ./configure --prefix=/usr/ --without-python && make && make install
             cd ..
         fi
     elif [ "$VERSION_ID" = "8" ]; then
