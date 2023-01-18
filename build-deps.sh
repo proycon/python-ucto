@@ -20,21 +20,28 @@ get_latest_version() {
     fi
 }
 
-if [ "$ID" = "almalinux" ] && [ -d /usr/local/share/aclocal ]; then
-    #needed for manylinux_2_28 container which ships custom autoconf
-    export ACLOCAL_PATH=/usr/share/aclocal
-fi
+LIBTAR=tklauser/libtar
+
 if [ "$ID" = "almalinux" ] || [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then
-    #they forgot to package libexttextcat-devel? grab one manually:
-    wget https://github.com/proycon/LaMachine/raw/master/deps/centos8/libexttextcat-devel-3.4.5-2.el8.x86_64.rpm
-    yum install -y libexttextcat-devel-3.4.5-2.el8.x86_64.rpm
+    if [ -d /usr/local/share/aclocal ]; then
+        #needed for manylinux_2_28 container which ships custom autoconf, possibly others too?
+        export ACLOCAL_PATH=/usr/share/aclocal
+    fi
+    if [ "$VERSION_ID" = "7" ]; then
+        yum install -y libtar-devel libexttextcat-devel
+        LIBTAR="" #not needed
+    elif [ "$VERSION_ID" = "8" ]; then
+        #they forgot to package libexttextcat-devel? grab one manually:
+        wget https://github.com/proycon/LaMachine/raw/master/deps/centos8/libexttextcat-devel-3.4.5-2.el8.x86_64.rpm
+        yum install -y libexttextcat-devel-3.4.5-2.el8.x86_64.rpm
+    fi
 fi
 
 [ -z "$PREFIX" ] && PREFIX="/usr/local/"
 PREVPWD="$(pwd)"
 BUILDDIR="$(mktemp -dt "build-deps.XXXXXX")"
 cd "$BUILDDIR"
-for PACKAGE in tklauser/libtar LanguageMachines/ticcutils LanguageMachines/libfolia LanguageMachines/uctodata LanguageMachines/ucto; do
+for PACKAGE in $LIBTAR LanguageMachines/ticcutils LanguageMachines/libfolia LanguageMachines/uctodata LanguageMachines/ucto; do
     echo "Git cloning $PACKAGE ">&2
     git clone https://github.com/$PACKAGE
     PACKAGE="$(basename $PACKAGE)"

@@ -31,6 +31,7 @@ jobs:
                 apt-get -y git libicu-dev libxml2-dev libexttextcat-dev libxslt1-dev libbz2-dev zlib1g-dev autoconf automake autoconf-archive libtool autotools-dev gcc g++ make
               elif command -v yum; then
                 yum install -y git libicu-devel libxml2-devel libxslt-devel libexttextcat zlib-devel bzip2-devel libtool autoconf-archive autoconf automake m4 wget
+                #on CentOS 7 we also have libtar-devel libexttextcat-devel which will be installed by build-deps.sh, on 8 they are missing and will be installed from source or otherwise
               elif command -v apk; then
                 apk add build-base git autoconf-archive autoconf automake libtool bzip2-dev icu-dev libxml2-dev libexttextcat-dev libtool rsync &&
                 rsync -av --ignore-existing /usr/share/aclocal/*.m4 /usr/local/share/aclocal/
