@@ -26,6 +26,7 @@ if [ "$ID" = "almalinux" ] || [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then
         export ACLOCAL_PATH=/usr/share/aclocal
     fi
     if [ "$VERSION_ID" = "7" ]; then
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/opt/rh/devtoolset-10/root/usr/lib
         yum install -y libexttextcat-devel
     elif [ "$VERSION_ID" = "8" ]; then
         #they forgot to package libexttextcat-devel? grab one manually:
