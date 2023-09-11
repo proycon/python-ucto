@@ -6,7 +6,7 @@ import platform
 import os
 import sys
 
-VERSION = '0.6.5' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
+VERSION = '0.6.6' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
 
 
 includedirs = []
@@ -50,7 +50,7 @@ else:
     extra_options = ['-D U_USING_ICU_NAMESPACE=1']
 
 extensions = cythonize([ Extension("ucto",
-                [ "libfolia_classes.pxd", "ucto_classes.pxd", "ucto_wrapper.pyx"],
+                [ "ucto_wrapper.pyx"],
                 language='c++',
                 include_dirs=includedirs,
                 library_dirs=libdirs,
