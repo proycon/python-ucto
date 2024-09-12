@@ -20,7 +20,7 @@ import sys
 cimport libfolia_classes
 cimport ucto_classes
 
-UCTODATAVERSION = "0.9.1"
+UCTODATAVERSION = "0.11"
 
 class TokenRole:
     NOROLE                      = 0
