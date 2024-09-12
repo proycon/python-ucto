@@ -32,9 +32,6 @@ if platform.system() == "Darwin":
         libdirs.append("/usr/local/opt/libxml2/lib")
         includedirs.append("/usr/local/opt/libxml2/include")
         includedirs.append("/usr/local/opt/libxml2/include/libxml2")
-        includedirs.append("/usr/local/opt/ticcutils/include")
-        includedirs.append("/usr/local/opt/libfolia/include")
-        includedirs.append("/usr/local/opt/ucto/include")
         #libdirs.append("/usr/local/opt/libtextcat/lib")
         #includedirs.append("/usr/local/opt/libtextcat/include/libtextcat")
 
