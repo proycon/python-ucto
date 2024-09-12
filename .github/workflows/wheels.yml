@@ -39,9 +39,8 @@ jobs:
               ./build-deps.sh
            CIBW_BEFORE_ALL_MACOS: >
               brew tap fbkarsdorp/homebrew-lamachine &&
-              brew install ucto
-              find /usr/ -name "*folia*" || true
-              find /opt/ -name "*folia*" || true
+              brew install ucto && 
+              find /usr/ -name "*folia*" && find /opt/ -name "*folia*"
            CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64
            CIBW_SKIP: "*-win* *-manylinux_i686 pp*"
 
