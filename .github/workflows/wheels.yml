@@ -6,14 +6,19 @@ on: [workflow_dispatch]
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: Build wheels on for ${{matrix.python.cp}}-${{ matrix.buildplat.sys }}
+    runs-on: ${{ matrix.buildplat.runs_on }}
     strategy:
       matrix:
         buildplat:
           - { runs_on: ubuntu-20.04, sys: manylinux, arch: x86_64, benv: "" }
           - { runs_on: macos-12,     sys: macosx,    arch: x86_64, benv: "12.0" }
           - { runs_on: macos-14,     sys: macosx,    arch: arm64,  benv: "14.0" }
+        python:
+          - { cp: "cp39",   rel: "3.9" }
+          - { cp: "cp310",  rel: "3.10" }
+          - { cp: "cp311",  rel: "3.11" }
+          - { cp: "cp312",  rel: "3.12" }          
 
     steps:
       - uses: actions/checkout@v4.1.1
@@ -30,6 +35,7 @@ jobs:
         if: ${{ runner.os != 'macOS' }}
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
+           CIBW_BUILD: ${{ matrix.python.cp }}-${{ matrix.buildplat.sys }}*
            CIBW_ARCHS_LINUX: "x86_64"
            CIBW_BEFORE_ALL_LINUX: >
               if command -v apt-get; then
@@ -49,6 +55,7 @@ jobs:
         if: ${{ runner.os == 'macOS' }}
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
+           CIBW_BUILD: ${{ matrix.python.cp }}-${{ matrix.buildplat.sys }}*
            CIBW_ARCHS: ${{ matrix.buildplat.arch }}
            CIBW_ENVIRONMENT: "MACOSX_DEPLOYMENT_TARGET=${{ matrix.buildplat.benv }}"
            CIBW_BEFORE_ALL_MACOS: >
@@ -57,4 +64,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
+          name: ${{matrix.python.cp}}-${{matrix.buildplat.sys}}-${{matrix.buildplat.arch}}
           path: ./wheelhouse/*.whl
