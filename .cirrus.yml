@@ -14,7 +14,7 @@ cirrus_wheels_macos_arm64_task:
     - which python3
     - python3 --version
   install_cibuildwheel_script:
-    - python3 -m pip install cibuildwheel
+    - python3 -m pip install --break-system-packages cibuildwheel
   run_cibuildwheel_script:
     - CIBW_BUILD_VERBOSITY=3 CIBW_SKIP="*-win32 *-manylinux_* *-musllinux_*" CIBW_ARCHS_MACOS="arm64" CIBW_BUILD="cp39-* cp310-* cp311-*" CIBW_BEFORE_ALL_MACOS="brew tap fbkarsdorp/homebrew-lamachine && brew install icu4c libxml2 frog" cibuildwheel --platform macos
   wheels_artifacts:
