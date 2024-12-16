@@ -6,6 +6,8 @@
 set -e
 
 . /etc/os-release
+echo "OS: $ID">&2
+echo "VERSION: $VERSION_ID">&2
 
 get_latest_version() {
     #Finds the latest git tag or falls back to returning the git default branch (usually master or main)
