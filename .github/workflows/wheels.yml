@@ -12,7 +12,6 @@ jobs:
       matrix:
         buildplat:
           - { runs_on: ubuntu-20.04, sys: manylinux, arch: x86_64, benv: "" }
-          - { runs_on: macos-12,     sys: macosx,    arch: x86_64, benv: "12.0" }
           - { runs_on: macos-14,     sys: macosx,    arch: arm64,  benv: "14.0" }
         python:
           - { cp: "cp38",   rel: "3.8" }
