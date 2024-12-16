@@ -6,7 +6,7 @@ import platform
 import os
 import sys
 
-VERSION = '0.6.8' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
+VERSION = '0.6.9' #ensure UCTODATAVERSION in ucto_wrapper.pyx is accurate
 
 
 includedirs = []
@@ -74,7 +74,7 @@ setup(
     url = "https://github.com/proycon/python-ucto",
     ext_modules = extensions,
     cmdclass = {'build_ext': build_ext},
-    requires=['ucto (>=0.34)'],
+    requires=['ucto (>=0.35)'],
     install_requires=['Cython'],
     data_files = [("sources",["ucto_wrapper.pyx"])],
     classifiers=[
