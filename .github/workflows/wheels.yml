@@ -49,7 +49,7 @@ jobs:
                 rsync -av --ignore-existing /usr/share/aclocal/*.m4 /usr/local/share/aclocal/
               fi &&
               ./build-deps.sh
-           CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64
+           CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2_28_x86_64
            CIBW_SKIP: "*-win* *-manylinux_i686 pp*"
 
       - name: Build wheels (macOS)
